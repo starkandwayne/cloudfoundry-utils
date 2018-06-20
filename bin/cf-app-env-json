@@ -19,7 +19,7 @@ fi
 
 
 APP_NAME=$1
-SPACE_UUID=$(jq -r '.SpaceFields.Guid' < ~/.cf/config.json)
+SPACE_UUID=$(jq -r '.SpaceFields.GUID' < ~/.cf/config.json)
 APP_UUID=$(cf curl "/v2/spaces/${SPACE_UUID}/apps?q=name:${APP_NAME}&inline-relations-depth=1" | jq -r '.resources[0].metadata.guid')
 
 cf curl /v2/apps/${APP_UUID}/env
